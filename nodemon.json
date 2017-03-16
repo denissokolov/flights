@@ -1,0 +1,9 @@
+{
+  "verbose": true,
+  "restartable": "rs",
+  "watch": [
+    "server/",
+    "index.js"
+  ],
+  "ext": "js jsx"
+}

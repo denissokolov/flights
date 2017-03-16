@@ -1,0 +1,28 @@
+{
+  "name": "flights",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.jsx",
+  "private": true,
+  "scripts": {
+    "watch-server": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denissokolov/flights.git"
+  },
+  "author": "Denis Sokolov <dnssokolov@gmail.com>",
+  "dependencies": {
+    "express": "^4.15.2",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-preset-env": "^1.2.2",
+    "babel-register": "^6.24.0",
+    "nodemon": "^1.11.0"
+  }
+}
