@@ -15,6 +15,8 @@ Root.propTypes = {
   flights: PropTypes.instanceOf(List).isRequired,
 };
 
+export { Root };
+
 export default connect(state => ({
   flights: state.flights,
 }))(Root);
