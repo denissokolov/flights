@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import fs from 'fs';
 
 import reducers from '../../shared/reducers';
-import Root from '../../shared/components/Root';
+import ConnectedRoot from '../../shared/components/Root';
 import immutifyState from '../../shared/utils/immutifyState';
 
 function indexRoute(req, res) {
@@ -30,7 +30,7 @@ function indexRoute(req, res) {
 
       const initialView = (
         <Provider store={store}>
-          <Root />
+          <ConnectedRoot />
         </Provider>
       );
 
