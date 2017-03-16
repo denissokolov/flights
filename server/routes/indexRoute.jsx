@@ -1,7 +1,7 @@
 import React from 'react';
-import {renderToString} from 'react-dom/server';
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
+import { renderToString } from 'react-dom/server';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import fs from 'fs';
 
 import reducers from '../../shared/reducers';
@@ -9,28 +9,28 @@ import Root from '../../shared/components/Root';
 import immutifyState from '../../shared/utils/immutifyState';
 
 function indexRoute(req, res) {
-  fs.readFile(`${__dirname}/../../data.json`, 'utf8', (err, content) => {
-    if (err) {
-      console.log(err);
+  fs.readFile(`${__dirname}/../../data.json`, 'utf8', (readError, content) => {
+    if (readError) {
+      console.log(readError);
       res.send('Error: get data from file');
     } else {
       let data;
       try {
         data = JSON.parse(content);
-      } catch (err) {
-        console.log(err);
+      } catch (parseError) {
+        console.log(parseError);
         res.send('Error: parse data from file');
       }
 
       const initialState = immutifyState({
-        flights: data.flights
+        flights: data.flights,
       });
 
       const store = createStore(reducers, initialState);
 
       const initialView = (
         <Provider store={store}>
-          <Root/>
+          <Root />
         </Provider>
       );
 

@@ -1,25 +1,20 @@
-import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {List} from 'immutable';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { List } from 'immutable';
 import Fligts from './Flights';
 
-class Root extends React.Component {
-  static propTypes = {
-    flights: PropTypes.instanceOf(List).isRequired,
-  };
+const Root = props => (
+  <div>
+    <h1>Flights</h1>
 
-  render() {
-    const {flights} = this.props;
+    <Fligts flights={props.flights} />
+  </div>
+);
 
-    return (
-      <div>
-        <h1>Flights</h1>
+Root.propTypes = {
+  flights: PropTypes.instanceOf(List).isRequired,
+};
 
-        <Fligts flights={flights}/>
-      </div>
-    );
-  }
-}
 export default connect(state => ({
-  flights: state.flights
+  flights: state.flights,
 }))(Root);

@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "watch-server": "nodemon",
+    "lint": "eslint --ext .jsx shared/** server/** index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,10 +26,15 @@
   },
   "devDependencies": {
     "babel": "^6.23.0",
-    "babel-plugin-transform-class-properties": "^6.23.0",
+    "babel-eslint": "^7.1.1",
     "babel-preset-env": "^1.2.2",
     "babel-preset-react": "^6.23.0",
     "babel-register": "^6.24.0",
+    "eslint": "^3.17.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
     "nodemon": "^1.11.0"
   }
 }

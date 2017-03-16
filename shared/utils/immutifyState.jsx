@@ -6,7 +6,7 @@ function immutifyState(obj) {
 
   Object
     .keys(objMut)
-    .forEach(key => {
+    .forEach((key) => {
       objMut[key] = fromJS(objMut[key]);
     });
 
