@@ -1,7 +1,17 @@
-import { List } from 'immutable';
+import { fromJS } from 'immutable';
 
-function FlightsReducer(state = new List(), action = {}) {
+const defaultState = fromJS({
+  items: [],
+  carriers: [],
+});
+
+function FlightsReducer(state = defaultState, action = {}) {
   switch (action.type) {
+    case 'FLUSH_FLIGHTS':
+      return state
+        .set('items', fromJS(action.items))
+        .set('carriers', fromJS(action.items.map(item => item.carrier).filter((x, i, a) => a.indexOf(x) === i)));
+
     default:
       return state;
   }

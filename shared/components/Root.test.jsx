@@ -6,13 +6,16 @@ import { Root } from './Root';
 
 function setup() {
   const props = {
-    flights: fromJS([{
-      id: 11,
-      carrier: 'Aeroflot',
-    }, {
-      id: 12,
-      carrier: 'KLM',
-    }]),
+    flights: fromJS({
+      items: [{
+        id: 11,
+        carrier: 'Aeroflot',
+      }, {
+        id: 12,
+        carrier: 'KLM',
+      }],
+      carriers: [],
+    }),
   };
   const enzymeWrapper = shallow(<Root {...props} />);
 
@@ -35,6 +38,15 @@ describe('Root Component', () => {
     const flightsComponent = enzymeWrapper.find('Flights');
 
     expect(flightsComponent.length).toBe(1);
-    expect(flightsComponent.props().flights).toBe(props.flights);
+    expect(flightsComponent.props().flights).toBe(props.flights.get('items'));
+  });
+
+  it('should render Filter Component', () => {
+    const { enzymeWrapper, props } = setup();
+
+    const filterComponent = enzymeWrapper.find('Filter');
+
+    expect(filterComponent.length).toBe(1);
+    expect(filterComponent.props().carriers).toBe(props.flights.get('carriers'));
   });
 });

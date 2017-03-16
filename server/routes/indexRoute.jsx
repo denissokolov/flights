@@ -6,13 +6,15 @@ import { Provider } from 'react-redux';
 import flightsService from '../services/flightsService';
 
 import reducers from '../../shared/reducers';
+import * as FlightsActions from '../../shared/actions/FlightsActions';
 import ConnectedRoot from '../../shared/components/Root';
-import immutifyState from '../../shared/utils/immutifyState';
 
 function indexRoute(req, res) {
   flightsService.getList()
     .then((flights) => {
-      const store = createStore(reducers, immutifyState({ flights }));
+      const store = createStore(reducers);
+
+      store.dispatch(FlightsActions.flushFlights(flights));
 
       const initialView = (
         <Provider store={store}>
