@@ -9,7 +9,7 @@
     "lint": "npm run eslint && npm run jsonlint",
     "eslint": "eslint --ext .jsx shared/** server/** index.js",
     "jsonlint": "jsonlint -q package.json && jsonlint -q nodemon.json && jsonlint -q data.json && jsonlint -q .eslintrc && jsonlint -q .babelrc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -37,6 +37,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",
+    "jest": "^19.0.2",
     "jsonlint": "^1.6.2",
     "nodemon": "^1.11.0"
   }
