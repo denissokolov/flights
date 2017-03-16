@@ -2,31 +2,17 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import fs from 'fs';
+
+import flightsService from '../services/flightsService';
 
 import reducers from '../../shared/reducers';
 import ConnectedRoot from '../../shared/components/Root';
 import immutifyState from '../../shared/utils/immutifyState';
 
 function indexRoute(req, res) {
-  fs.readFile(`${__dirname}/../../data.json`, 'utf8', (readError, content) => {
-    if (readError) {
-      console.log(readError);
-      res.send('Error: get data from file');
-    } else {
-      let data;
-      try {
-        data = JSON.parse(content);
-      } catch (parseError) {
-        console.log(parseError);
-        res.send('Error: parse data from file');
-      }
-
-      const initialState = immutifyState({
-        flights: data.flights,
-      });
-
-      const store = createStore(reducers, initialState);
+  flightsService.getList()
+    .then((flights) => {
+      const store = createStore(reducers, immutifyState({ flights }));
 
       const initialView = (
         <Provider store={store}>
@@ -37,8 +23,11 @@ function indexRoute(req, res) {
       res.render('index', {
         componentHTML: renderToString(initialView),
       });
-    }
-  });
+    })
+    .catch((error) => {
+      console.log(error);
+      res.send('Get flights error');
+    });
 }
 
 export default indexRoute;
