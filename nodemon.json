@@ -3,6 +3,7 @@
   "restartable": "rs",
   "watch": [
     "server/",
+    "shared/",
     "index.js"
   ],
   "ext": "js jsx"
