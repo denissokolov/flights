@@ -7,6 +7,7 @@ describe('FlightsReducer', () => {
       .toEqual(fromJS({
         items: [],
         carriers: [],
+        carriersFilter: '',
       }));
   });
 
@@ -25,6 +26,20 @@ describe('FlightsReducer', () => {
     })).toEqual(fromJS({
       items,
       carriers: ['S7', 'Aeroflot'],
+      carriersFilter: '',
+    }));
+  });
+
+  it('should handle CHANGE_CARRIERS_FILTER', () => {
+    const carriersFilter = 'Aeroflot';
+
+    expect(FlightsReducer(undefined, {
+      type: 'CHANGE_CARRIERS_FILTER',
+      value: carriersFilter,
+    })).toEqual(fromJS({
+      items: [],
+      carriers: [],
+      carriersFilter,
     }));
   });
 });

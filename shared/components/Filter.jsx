@@ -3,11 +3,16 @@ import { List } from 'immutable';
 
 const Filter = props => (
   <div>
-    <select>
-      <option default>All Carriers</option>
+    <select onChange={event => props.onChange(event.target.value)}>
+      <option value="" default>
+        All Carriers
+      </option>
 
       {props.carriers.map(carrier => (
-        <option value={carrier} key={carrier}>
+        <option
+          value={carrier}
+          key={carrier}
+        >
           {carrier}
         </option>
       ))}
@@ -17,6 +22,7 @@ const Filter = props => (
 
 Filter.propTypes = {
   carriers: PropTypes.instanceOf(List).isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Filter;

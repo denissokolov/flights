@@ -8,6 +8,7 @@ describe('Flights Component', () => {
   it('should render only default option for empty props carriers list', () => {
     const props = {
       carriers: fromJS([]),
+      onChange: () => {},
     };
     const enzymeWrapper = shallow(<Filter {...props} />);
 
@@ -18,6 +19,7 @@ describe('Flights Component', () => {
   it('should render all carriers options from props list', () => {
     const props = {
       carriers: fromJS(['S7', 'Aeroflot']),
+      onChange: () => {},
     };
     const enzymeWrapper = shallow(<Filter {...props} />);
 

@@ -19,5 +19,18 @@ describe('FlightsActions', () => {
       expect(FlightsActions.flushFlights(items)).toEqual(expectedAction);
     });
   });
+
+  describe('changeCarriersFilter', () => {
+    it('should return action with value', () => {
+      const value = 'Aeroflot';
+
+      const expectedAction = {
+        type: 'CHANGE_CARRIERS_FILTER',
+        value,
+      };
+
+      expect(FlightsActions.changeCarriersFilter(value)).toEqual(expectedAction);
+    });
+  });
 });
 

@@ -15,7 +15,9 @@ function setup() {
         carrier: 'KLM',
       }],
       carriers: [],
+      carriersFilter: '',
     }),
+    dispatch: () => {},
   };
   const enzymeWrapper = shallow(<Root {...props} />);
 

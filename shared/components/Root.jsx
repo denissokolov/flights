@@ -2,21 +2,31 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
 
+import * as FlightsActions from '../actions/FlightsActions';
+
 import Fligts from './Flights';
 import Filter from './Filter';
 
-const Root = props => (
+const Root = ({ dispatch, flights }) => (
   <div>
     <h1>Flights</h1>
 
-    <Filter carriers={props.flights.get('carriers')} />
+    <Filter
+      value={flights.get('carriersFilter')}
+      carriers={flights.get('carriers')}
+      onChange={value => dispatch(FlightsActions.changeCarriersFilter(value))}
+    />
 
-    <Fligts flights={props.flights.get('items')} />
+    <Fligts
+      flights={flights.get('items')}
+      carriersFilter={flights.get('carriersFilter')}
+    />
   </div>
 );
 
 Root.propTypes = {
   flights: PropTypes.instanceOf(Map).isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export { Root };

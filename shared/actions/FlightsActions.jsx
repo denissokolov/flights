@@ -4,3 +4,10 @@ export function flushFlights(items) {
     items,
   };
 }
+
+export function changeCarriersFilter(value) {
+  return {
+    type: 'CHANGE_CARRIERS_FILTER',
+    value,
+  };
+}
