@@ -2,9 +2,11 @@
   "name": "flights",
   "version": "1.0.0",
   "description": "",
-  "main": "index.jsx",
+  "main": "index.js",
   "private": true,
   "scripts": {
+    "start": "node index.js",
+    "build": "webpack",
     "watch-server": "nodemon",
     "watch-client": "webpack-dev-server --progress --color --config webpack.dev.config.js",
     "lint": "npm run eslint && npm run jsonlint",

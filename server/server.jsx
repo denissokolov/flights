@@ -3,6 +3,8 @@ import indexRoute from './routes/indexRoute';
 
 const app = express();
 
+app.use(express.static('public'));
+
 app.set('views', './server/views');
 app.set('view engine', 'pug');
 
