@@ -17,7 +17,7 @@ http://localhost:8000
 
 `npm run build` - build client app
 
-`npm start` - build client app
+`npm start` - start application at http://localhost:8000
 
 `npm run watch-server` - run local app at http://localhost:8000 with watching for server changes
 
