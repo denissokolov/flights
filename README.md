@@ -7,7 +7,9 @@ React + Redux App Example
 http://localhost:8000
 
 `npm install`
+
 `npm run build`
+
 `npm start`
 
 ## NPM scripts
