@@ -8,14 +8,18 @@ import Fligts from './Flights';
 import Filter from './Filter';
 
 const Root = ({ dispatch, flights }) => (
-  <div>
-    <h1>Flights</h1>
+  <div className="container">
+    <div>
+      <h1 className="pull-left">
+        Flights
+      </h1>
 
-    <Filter
-      value={flights.get('carriersFilter')}
-      carriers={flights.get('carriers')}
-      onChange={value => dispatch(FlightsActions.changeCarriersFilter(value))}
-    />
+      <Filter
+        value={flights.get('carriersFilter')}
+        carriers={flights.get('carriers')}
+        onChange={value => dispatch(FlightsActions.changeCarriersFilter(value))}
+      />
+    </div>
 
     <Fligts
       flights={flights.get('items')}

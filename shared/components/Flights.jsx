@@ -2,17 +2,42 @@ import React, { PropTypes } from 'react';
 import { List } from 'immutable';
 
 const Flights = ({ flights, carriersFilter }) => (
-  <div>
-    {flights.map(flight => (
-      <p
-        key={flight.get('id')}
-        className={carriersFilter && carriersFilter !== flight.get('carrier') ? 'hidden' : 'visible'}
-        style={{ display: carriersFilter && carriersFilter !== flight.get('carrier') ? 'none' : 'block' }}
-      >
-        {flight.get('carrier')}
-      </p>
-    ))}
-  </div>
+  <table className="table table-striped">
+    <thead>
+      <tr>
+        <th>From</th>
+        <th>To</th>
+        <th>Carrier</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {flights.map(flight => (
+        <tr
+          key={flight.get('id')}
+          className={carriersFilter && carriersFilter !== flight.get('carrier') ? 'hidden' : 'visible'}
+        >
+          <td>
+            {flight.get('direction').get('from')}
+            <br />
+            <small className="text-primary">
+              {(new Date(flight.get('departure'))).toUTCString()}
+            </small>
+          </td>
+          <td>
+            {flight.get('direction').get('to')}
+            <br />
+            <small className="text-primary">
+              {(new Date(flight.get('arrival'))).toUTCString()}
+            </small>
+          </td>
+          <td>
+            {flight.get('carrier')}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
 );
 
 Flights.propTypes = {
