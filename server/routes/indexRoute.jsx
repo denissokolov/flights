@@ -16,6 +16,8 @@ function indexRoute(req, res) {
 
       store.dispatch(FlightsActions.flushFlights(flights));
 
+      const initialState = store.getState();
+
       const initialView = (
         <Provider store={store}>
           <ConnectedRoot />
@@ -23,6 +25,7 @@ function indexRoute(req, res) {
       );
 
       res.render('index', {
+        initialState: JSON.stringify(initialState),
         componentHTML: renderToString(initialView),
       });
     })

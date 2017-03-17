@@ -6,8 +6,9 @@
   "private": true,
   "scripts": {
     "watch-server": "nodemon",
+    "watch-client": "webpack-dev-server --progress --color --config webpack.dev.config.js",
     "lint": "npm run eslint && npm run jsonlint",
-    "eslint": "eslint --ext .jsx shared/** server/** index.js",
+    "eslint": "eslint --ext .jsx --ext .js shared/** server/** index.js webpack.dev.config.js",
     "jsonlint": "jsonlint -q package.json && jsonlint -q nodemon.json && jsonlint -q data.json && jsonlint -q .eslintrc && jsonlint -q .babelrc",
     "test": "jest"
   },
@@ -29,6 +30,7 @@
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.4.1",
     "babel-preset-env": "^1.2.2",
     "babel-preset-react": "^6.23.0",
     "babel-register": "^6.24.0",
@@ -41,6 +43,12 @@
     "jest": "^19.0.2",
     "jsonlint": "^1.6.2",
     "nodemon": "^1.11.0",
-    "react-addons-test-utils": "^15.4.2"
+    "react-addons-test-utils": "^15.4.2",
+    "react-hot-loader": "^1.3.1",
+    "redux-devtools": "^3.3.2",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.2.0",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.2"
   }
 }

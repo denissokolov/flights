@@ -6,3 +6,8 @@ html(lang="en")
 
     body
         div#react-view !{componentHTML}
+
+        script(type='text/javascript').
+          window.__INITIAL_STATE__ = !{initialState};
+
+        script(type="text/javascript", src="/built/bundle.js")
